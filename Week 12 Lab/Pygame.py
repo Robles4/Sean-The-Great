@@ -38,9 +38,9 @@ score = 0
 def draw_screen():
     screen.fill(bg)
 
-def draw_score():
-    score_txt = 'score: ' + str(score)
 
+def draw_score():
+    'score: ' + str(score)
 
 
 # setup loop with exit event handler
@@ -64,7 +64,7 @@ while run:
                 direction = 4
 
         # create food
-        if new_food == True:
+        if new_food:
             new_food = False
             food[0] = cell_size * random.randint(0, (screen_width // cell_size) - 1)
             food[1] = cell_size * random.randint(0, (screen_height // cell_size) - 1)
@@ -72,28 +72,27 @@ while run:
     # draw food
     pygame.draw.rect(screen, food_col, (food[0], food[1], cell_size, cell_size))
 
-
-        #check if food has been eaten
+    # check if food has been eaten
     if snake_pos[0] == food:
         new_food = True
-        #create a new piece at the last point of the snake's tail
+        # create a new piece at the last point of the snake's tail
         new_piece = list(snake_pos[-1])
         if direction == 1:
             new_piece[1] += cell_size
-        if direction == 3:
-            new_piece[1] -= cell_size
         if direction == 2:
+            new_piece[1] -= cell_size
+        if direction == 3:
             new_piece[0] -= cell_size
         if direction == 4:
             new_piece[0] += cell_size
 
-        #attached new piece to the end of the snake
+        # attached new piece to the end of the snake
         snake_pos.append(new_piece)
 
-        #increase score
+        # increase score
         score += 1
 
-    if update_snake > 99:
+    if update_snake > 90:
         update_snake = 0
         snake_pos = snake_pos[-1:] + snake_pos[:-1]
         # heading up
