@@ -54,7 +54,7 @@ while run:
             pygame.draw.rect(screen, red, (x[0] + 1, x[1] + 1, cell_size - 2, cell_size - 2))
             head = 0
 
-    # update the display
+    #update the display
     pygame.display.update()
 
 # end game
