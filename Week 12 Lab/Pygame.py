@@ -1,11 +1,44 @@
 import pygame
 from pygame.locals import *
 import random
+from tkinter import *
+
+root = Tk()
+root.title('Snake Game - Tutorial')
+root.geometry('500x500')
+
+
+def tab1():
+    def tab2():
+        label1.destroy()
+        button1.destroy()
+        label2 = Label(root, text='This is your classic game of Snake Game. This is the tutorial on how to play this game. '
+                                  'The goal is to get the highest amount of red squares.'
+                                  'to move you need to use the UP, DOWN, LEFT, RIGHT arrow keys to move around.'
+                                  'the twist is that it moves very quickly so be ready!!!!!', font=('Times_New_Roman', 10))
+        label2.place(relx=0.5, rely=0.5, anchor='center')  # Place text in the middle of the screen
+        def back():
+            label2.destroy()
+            button2.destroy()
+            tab1()
+        button2 = Button(root, text='HOW TO PLAY', font=('Times_New_Roman', 10), command=back, activebackground='blue')
+        button2.pack(side=BOTTOM)
+    label1 = Label(root, text='TUTORIAL SCREEN', font=('Times_New_Roman', 15))
+    label1.pack()
+
+    button1 = Button(root, text='HOW TO PLAY', font=('Times_New_Roman', 10), command=tab2, activebackground='red')
+    button1.pack(side=BOTTOM)
+
+
+tab1()
+
+root.mainloop()
+
 
 pygame.init()
 
-screen_width = 600
-screen_height = 600
+screen_width = 800
+screen_height = 800
 
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption('Snake')
@@ -34,12 +67,12 @@ clicked = False
 score = 0
 
 # define colors
-bg = (255, 200, 150)
+bg = (115, 100, 125)
 body_inner = (50, 175, 25)
 body_outer = (100, 100, 200)
 food_col = (200, 50, 50)
-blue = (0, 0, 255)
-red = (255, 0, 0)
+blue = (111, 13, 255)
+red = (155, 0, 155)
 
 
 def draw_screen():
@@ -189,6 +222,6 @@ while run:
 
     pygame.display.update()
 
-    update_snake += 1
+    update_snake += 3
 
 pygame.quit()
